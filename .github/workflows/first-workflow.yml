@@ -16,3 +16,34 @@ jobs:
                  |
                  chmod +x ./scriptdragon.sh
                  ./scriptdragon.sh
+
+            - uses: actions/upload-artifact@v4
+              with:
+                   name: my-artifact
+                   path: dragon.txt
+            
+
+    second_job:
+        needs: first_job
+        runs-on: ubuntu-latest
+        steps:
+            - name: Test file exists
+              run: grep -i "dragon" dragon.txt
+
+            - uses: actions/download-artifact@v4
+              with:
+                path: my-artifact
+                            
+    third_job:
+        needs: [second_job , first_job]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/download-artifact@v4
+              with:
+                 path: my-artifact
+                 
+            - name: read file 
+              run: cat dragon.txt
+
+            - name: checkout repo files
+              run: ls
