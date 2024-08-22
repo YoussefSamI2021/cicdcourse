@@ -31,7 +31,7 @@ jobs:
             - uses: actions/download-artifact@v4
               with:
                 name: my-artifact
-                path: dragon.txt 
+
 
             - name: Test file exists
               run: ls -al
@@ -43,7 +43,7 @@ jobs:
             - uses: actions/download-artifact@v4
               with:
                 name: my-artifact
-                path: dragon.txt
+
               
             - name: read file 
               run: cat dragon.txt
