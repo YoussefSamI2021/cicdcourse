@@ -31,8 +31,7 @@ jobs:
             - uses: actions/download-artifact@v4
               with:
                   path: my-artifact
-            - name: unzip
-              run: unzip  my-artifact
+
 
             - name: Test file exists
               run: ls -al
@@ -45,9 +44,9 @@ jobs:
               with:
                  path: my-artifact
 
-            - name: Test file exists
-              run: grep -i "dragon" dragon.txt
-
+            - name: unzip
+              run: unzip  my-artifact
+              
             - name: read file 
               run: cat dragon.txt
 
