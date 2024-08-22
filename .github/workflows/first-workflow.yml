@@ -31,9 +31,9 @@ jobs:
             - uses: actions/download-artifact@v4
               with:
                   path: my-artifact
-                  
+
             - name: Test file exists
-              run: grep -i "dragon" dragon.txt
+              run: grep -i "dragon" my-artifact/dragon.txt
                             
     third_job:
         needs: [second_job , first_job]
