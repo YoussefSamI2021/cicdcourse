@@ -35,7 +35,7 @@ jobs:
               run: unzip  my-artifact
 
             - name: Test file exists
-              run: ls
+              run: ls -al
                             
     third_job:
         needs: [second_job , first_job]
