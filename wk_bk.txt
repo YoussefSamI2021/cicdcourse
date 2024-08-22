@@ -1,0 +1,33 @@
+name: my first wf
+on: push
+jobs:
+    first_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4.1.7
+
+            - name: welcome msg
+              run: echo "hello data eng"
+
+            - name: hamada
+            #   run: chmod +x ./script.sh ; ./script.sh;
+              run:
+                 |
+                 chmod +x ./script.sh
+                 ./script.sh
+
+            - name: install cowsay
+              run: sudo apt-get install cowsay -y
+
+            - name: execute-cowsay cmd
+              run: cowsay -f dragon "Run for cover , I am a Dragon.......hohoho" >> dragon.txt
+
+            - name: test file exisits
+              run: grep -i "dragon" dragon.txt
+
+            - name: read file 
+              run: cat dragon.txt
+
+            - name: check repo files
+              run: ls
