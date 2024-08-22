@@ -30,10 +30,9 @@ jobs:
 
             - uses: actions/download-artifact@v4
               with:
-                  path: my-artifact
-
+                  path: dragon.txt
             - name: Test file exists
-              run: grep -i "dragon" my-artifact/dragon.txt
+              run: grep -i "dragon" dragon.txt
                             
     third_job:
         needs: [second_job , first_job]
@@ -41,7 +40,7 @@ jobs:
         steps:
             - uses: actions/download-artifact@v4
               with:
-                 path: my-artifact
+                 path: dragon.txt
 
             - name: read file 
               run: cat dragon.txt
